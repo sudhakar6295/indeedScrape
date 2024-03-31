@@ -22,32 +22,23 @@ class TitleSpider(Spider):
 
     def parse(self, response: Response):
        
-       job_urls = response.xpath('//*[contains(@class,"resultContent")]')
+       job_urls = response.xpath('//*[@data-tracking-control-name="public_jobs_jserp-result_search-card"]/@href')
 
        for job_url in job_urls:
-           
-           product_url = urljoin(response.url, job_url)
-           yield Request(product_url, callback=self.parse_product)
+
+           yield Request(job_url, callback=self.parse_product)
 
     def parse_product(self, response: Response):
 
-        job_title = response.xpath('//*[contains(@class,"jobsearch-JobInfoHeader-title")]//span/text()').get()
-        company_name = response.xpath('//*[contains(@data-testid,"inlineHeader-companyName")]//a/text()').get()
-        address = response.xpath('//*[contains(@data-testid,"companyLocation")]//text()').get()
+        job_title = response.xpath('//*[@data-tracking-control-name="public_jobs_topcard-title"]/h2/text()').get()
+        company_name = response.xpath('//*[@data-tracking-control-name="public_jobs_topcard-org-name"]/text()').get()
 
-        job_type_lst =response.xpath('//h3[contains(text(),"Job type")]/following-sibling::ul//div/text()').extract()
-
-        job_type = ''.join([i for i in job_type_lst if i.strip()])
-
-        description = response.xpath('//*[@id="jobDescriptionText"]//text()').extract()
 
         yield TitleItem(
             url=response.url,
             job_title=job_title,
             company_name=company_name,
-            address=address,
-            job_type=job_type,
-            description=description
+
         )
         
            
