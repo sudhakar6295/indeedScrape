@@ -13,6 +13,12 @@ class TitleSpider(Spider):
     """
     Scrapes title pages and enqueues all links found on the page.
     """
+    custom_settings = {
+        'DOWNLOAD_DELAY': 0.2, # 2 seconds of delay
+        "CONCURRENT_REQUESTS" : 1,
+        "ROBOTSTXT_OBEY" : False,
+        "USER_AGENT" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+          }
 
     name = 'indeed'
 
