@@ -19,6 +19,3 @@ class TitleItem(Item):
     url = Field()
     job_title = Field()
     company_name = Field()
-    address = Field()
-    job_type = Field()
-    description = Field()
