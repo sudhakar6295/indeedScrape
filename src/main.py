@@ -29,7 +29,7 @@ from apify.scrapy.utils import apply_apify_settings
 from .spiders.title import TitleSpider as Spider
 
 # Default input values for local execution using `apify run`
-LOCAL_DEFAULT_START_URLS = [{'url': 'https://www.indeed.com/jobs?q=Java&sc=0kf%3Ajt%28contract%29%3B&vjk=1b93328edf307cda'}]
+LOCAL_DEFAULT_START_URLS = [{'url': 'https://www.linkedin.com/jobs/search/?currentJobId=3875742938&f_I=14%2C11%2C1%2C148%2C43%2C31%2C4%2C1594%2C15%2C116%2C84&f_JT=F%2CC%2CT&geoId=103644278&location=United%20States&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R'}]
 
 
 async def main() -> None:
