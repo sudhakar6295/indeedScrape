@@ -18,6 +18,7 @@ For an in-depth description of the Apify-Scrapy integration process, our Scrapy 
 other stuff, please refer to the following documentation page: https://docs.apify.com/cli/docs/integrating-scrapy.
 """
 
+
 from __future__ import annotations
 
 from scrapy.crawler import CrawlerProcess
