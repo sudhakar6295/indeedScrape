@@ -29,21 +29,21 @@ class TitleSpider(Spider):
     def parse(self, response: Response):
        
        job_urls = response.xpath('//*[@data-tracking-control-name="public_jobs_jserp-result_search-card"]/@href').extract()
-
+       
        for job_url in job_urls:
-
+         
            yield Request(job_url, callback=self.parse_product)
 
     def parse_product(self, response: Response):
-
-        job_title = response.xpath('//*[@data-tracking-control-name="public_jobs_topcard-title"]/h2/text()').get()
-        company_name = response.xpath('//*[@data-tracking-control-name="public_jobs_topcard-org-name"]/text()').get()
+    
+        job_title = response.xpath('//h1/text()').get()
+       
 
 
         yield TitleItem(
             url=response.url,
             job_title=job_title,
-            company_name=company_name,
+       
 
         )
         

@@ -18,4 +18,4 @@ class TitleItem(Item):
 
     url = Field()
     job_title = Field()
-    company_name = Field()
+    
