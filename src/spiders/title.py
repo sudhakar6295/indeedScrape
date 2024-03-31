@@ -28,7 +28,7 @@ class TitleSpider(Spider):
 
     def parse(self, response: Response):
        
-       job_urls = response.xpath('//*[@data-tracking-control-name="public_jobs_jserp-result_search-card"]/@href')
+       job_urls = response.xpath('//*[@data-tracking-control-name="public_jobs_jserp-result_search-card"]/@href').extract()
 
        for job_url in job_urls:
 
